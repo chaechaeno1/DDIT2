@@ -119,9 +119,86 @@ public class VectorTest {
 		System.out.println();
 		
 		// ----------------------------------------------------------		
-		/**
-		 * 
+		/*
+		 제네릭타입(Generic Type) ==> 클래스 내부에서 사용할 데이터 타입을 객체를 생성할 때 외부에서 지정해주는 기법으로
+		 						   객체를 선언할 때 괄호(<>)안에 그 객체의 내부에서 사용할 데이터의 타입을 지정해주는 것 
+		 					  ==> 이런식으로 선언하게 되면 그 데이터 타입 이외의 다른 종류의 데이터를 지정할 수 없음
+		 					  ==> 이 때 제네릭으로 선언 될 수 있는 데이터 타입은 클래스형 이어야 함		
+		 					      int - Integer, boolean은 Boolean, char는 Character 등으로 대체
+		 					  ==> 제네릭 타입으로 선언하게 되면 데이터를 꺼내올 때 별도의 형변환 필요 없음    					 
 		 */
+		
+		Vector<Integer> v2 = new Vector<Integer>(); //int형 자료만 저장할 수 있는 Vector
+		Vector<String> v3 = new Vector<String>();   //String형 자료만 저장할 수 있는 Vector
+		
+		v3.add("안녕하세요");
+		//v3.add(123); //오류 : 지정한 제네릭 타입과 다른 종류의 데이터를 저장할 수 없음
+
+		String sTemp2 = v3.get(0); //형변환 불필요
+		System.out.println(sTemp2);
+		
+		//아래처럼 쓰는 경우는 거의 없으나 이론적으로 가능함
+		Vector<Vector> vv = new Vector<Vector>();
+		Vector<Vector<Vector>> vvv = new Vector<Vector<Vector>>();
+		
+		System.out.println();
+		System.out.println("============================================");
+		// ----------------------------------------------------------	
+		
+		v3.clear();
+		System.out.println("v3의 size : " + v3.size());
+		
+		v3.add("AAA");
+		v3.add("BBB");
+		v3.add("CCC");
+		v3.add("DDD");
+		v3.add("EEE");
+		
+		Vector<String> v4 = new Vector<String>();
+		v4.add("BBB");
+		v4.add("EEE");
+		
+		System.out.println("v3 => "+v3);
+		System.out.println("v4 => "+v4);
+		
+		// ----------------------------------------------------------
+		// 데이터 삭제하기3 : removeAll(Collection객체)
+		// ==> 벡터의 데이터 중에서 'Collection객체'가 가지고 있는 모든 데이터를 삭제
+		// ==> 반환값 : 성공(true), 실패(false)
+		
+		v3.removeAll(v4);
+		//v3이 가지고 있는 데이터 중에서 v4의 데이터를 삭제
+		System.out.println("삭제 작업 후 v3 => "+v3);
+		System.out.println("삭제 작업 후 v4 => "+v4);
+		System.out.println("============================================");
+		System.out.println();
+		
+		v3.clear();
+		
+		v3.add("AAA");
+		v3.add("BBB");
+		v3.add("CCC");
+		v3.add("DDD");
+		v3.add("EEE");
+		
+		//벡터에 저장된 데이터들을 순서대로 가져와 사용하고 싶으면 반복문을 상용
+		//주로 for문 사용
+
+		for(int i=0; i<v3.size();i++) {
+			System.out.println(i+"번째 데이터: "+v3.get(i));
+		}
+		System.out.println("============================================");
+		
+		//향상된 for문
+		for(String str : v3) {
+			System.out.println(str);
+		}
+		
+		// ----------------------------------------------------------
+		
+		
+		
+		
 		
 		
 		
