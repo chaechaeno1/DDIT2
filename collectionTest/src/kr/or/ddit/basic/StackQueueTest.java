@@ -1,12 +1,69 @@
 package kr.or.ddit.basic;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 public class StackQueueTest {
 	/*
-	 Stack ==>
-	 Queue ==>
+	 Stack ==> 후입선출(LIFO)
+	 Queue ==> 선입선출(FIFO)
+	 
+	 Stack과 Queue는 LinkedList를 이용하여 사용
+	 (단, Stack은 'Stack'이라는 클래스를 제공) 
 	 */
 
 	public static void main(String[] args) {
+		/*
+		 - Stack의 명령
+		 1. 자료 입력: push(입력값)
+		 2. 자료 출력: pop() ==> 자료를 꺼내온 후 꺼내온 자료를 Stack에서 삭제
+		 			peek() ==> 삭제없이 자료를 꺼냄
+		 */
+		
+		Stack<String> stack = new Stack<>();
+		
+		stack.push("홍길동");
+		stack.push("일지매");
+		stack.push("변학도");
+		stack.push("강감찬");
+		
+		System.out.println("현재 stack값 : "+ stack);
+		
+		String data = stack.pop();
+		System.out.println("꺼내온 값 :"+data);
+		System.out.println("꺼내온 값 :"+stack.pop());
+		System.out.println("현재 stack값 : "+ stack);
+		
+		stack.push("성춘향");
+		System.out.println("추가 후 stack값 : "+stack);
+		
+		System.out.println("꺼내온 값:" + stack.pop());
+		System.out.println("현재 stack값 : "+ stack);
+		
+		System.out.println("삭제없이 꺼내온 값 :"+stack.peek());
+		System.out.println("현재 stack값 : "+ stack);
+		System.out.println("==================================");
+		System.out.println();
+		
+		/*
+		 - Queue의 명령
+		 1. 자료 입력: offer(입력값) 
+		 2. 자료 출력: poll() ==> 자료를 꺼내오고 꺼내온 자료를 Queue에서 삭제
+		 			peek() ==> 삭제없이 자료를 꺼냄
+		 */
+		
+		//큐는 스택과 달리 클래스가 따로 없기 때문에 LinckedList로 객체 생성
+		Queue<String> queue = new LinkedList<>();
+		
+		queue.offer("홍길동");
+		queue.offer("일지매");
+		queue.offer("변학도");
+		queue.offer("강감찬");
+		
+		System.out.println("현재 queue의 값:"+queue);
+		
+		
 		
 
 	}
