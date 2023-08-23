@@ -21,6 +21,7 @@ public class ListSortTest02 {
 		System.out.println("============================================");
 		
 		//Member의 num값의 내림차순으로 정렬하는 외부 정렬 기준 클래스를 이용하여 정렬하시오.
+		//(클래스명 : SortNumDesc)
 	}
 
 }
