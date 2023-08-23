@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class ArrayListTest02Teaching {
 
 	public static void main(String[] args) {
+		/* if문 다양하게 활용
+		 */
 		method01();
 		method02();
 		method03();
