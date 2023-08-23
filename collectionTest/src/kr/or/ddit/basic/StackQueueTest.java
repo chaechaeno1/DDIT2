@@ -63,8 +63,19 @@ public class StackQueueTest {
 		
 		System.out.println("현재 queue의 값:"+queue);
 		
+		String temp = queue.poll();
+		System.out.println("꺼내온 값: "+temp);
+		System.out.println("꺼내온 값: "+queue.poll());
+		System.out.println("현재 queue의 값:"+queue);
 		
+		queue.offer("성춘향");
+		System.out.println("현재 queue의 값:"+queue);
 		
+		System.out.println("꺼내온 값 : "+queue.poll());
+		System.out.println("현재 queue의 값:"+queue);
+		
+		System.out.println("삭제없이 꺼내온 값: "+queue.peek());
+		System.out.println("현재 queue의 값:"+queue);
 
 	}
 
