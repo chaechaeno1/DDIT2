@@ -115,7 +115,7 @@ public class StudentTest {
 		}
 
 		// getter setter
-		// Student ㅋ
+		// Student
 		public int getNum() {
 			return num;
 		}
