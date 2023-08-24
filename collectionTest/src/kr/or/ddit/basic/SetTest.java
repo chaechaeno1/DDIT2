@@ -1,6 +1,7 @@
 package kr.or.ddit.basic;
 
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class SetTest {
 
@@ -33,7 +34,48 @@ public class SetTest {
 		// set 데이터 ==>[DD, AA, CC, BB, 1, 2, 3]
 		// 입력 순서와 출력 순서가 일치하지 않음
 		
+		System.out.println("set의 개수 ==>" + hs1.size());
+		//Set에 중복되는 데이터를 추가하면 false를 반환하고 데이터는 추가되지 않는다.
 		
+		System.out.println();
+		
+		boolean isAdd = hs1.add("FF");
+		System.out.println("중복되지 않을 때 isAdd = "+isAdd);
+		System.out.println("set 데이터 ==>" +hs1);
+		System.out.println();
+		
+		isAdd = hs1.add("CC");
+		System.out.println("중복될 때 isAdd = " +isAdd);
+		System.out.println("set 데이터 ==> "+hs1);
+		System.out.println();
+		
+		
+		// Set의 데이터는 수정하는 명령이 따로 없기 때문에 해당 자료를 삭제한 후 추가.
+		
+		// 삭제하는 메서드 ==> remove(삭제할자료)
+		//				  반환값: 삭제성공 true, 삭제실패 false
+		// 전체 자료 삭제   ==> clear() 
+		
+		//"FF"데이터를 "EE"로 변경하기
+		hs1.remove("FF");
+		System.out.println("삭제 후 Set 데이터 ==> "+hs1);
+		hs1.add("EE");
+		System.out.println("추가 후 Set 데이터 ==> "+hs1);
+		
+//		hs1.clear();
+//		System.out.println("clear명령 후 set 데이터 ==>"+hs1);
+		
+		/*
+		 Set의 데이터는 순서(index)가 없기 때문에 List처럼 인덱스로 데이터를 하나씩 불러올 수 없음.
+		 그래서 데이터를 하나씩 차례로 얻기 위해서는 Iterator형 객체로 변환해야 한다.
+		 
+		 - Set형의 데이터들을 Iterator형의 객체로 변환하는 메서드 ==> iterator()	 
+		 */
+		
+		Iterator it = hs1.iterator(); // Set 데이터를 Iterator로 변환
+		
+		// Iterator 객체의 hasNext()메서드
+		//
 		
 	}
 
