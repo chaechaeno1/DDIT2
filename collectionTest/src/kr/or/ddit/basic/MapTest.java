@@ -57,8 +57,20 @@ Map ==> key값과 value값을 한 쌍으로 관리하는 객체
 		}
 		System.out.println("============================================================");
 		
-		//
+		//2. keySet을 향상된 for문으로 처리하기
+//		for(String key : keySet) {
+		for(String key : map.keySet()) {
+			String value = map.get(key);
+			System.out.println(key + " => "+ value);
+		}
+		System.out.println("=============================================");
 		
+		
+		//3. value값만 읽어와 처리하기 ==> valuse()메서드 이용
+		for(String value : map.values()) {
+			System.out.println(value);
+		}
+		System.out.println("=============================================");
 		
 	}
 
