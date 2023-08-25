@@ -43,7 +43,7 @@ public class BaseBallTest {
 		ArrayList<Integer> baseBallList = new ArrayList<Integer>(baseBall);
 //		System.out.println("컴퓨터의 난수(List) >> " + baseBallList);
 //		System.out.println(baseBall);
-//		Collections.shuffle(baseBallList);
+		Collections.shuffle(baseBallList);
 //		System.out.println(baseBallList);
 
 		int num = 0; // 게임 시도 횟수

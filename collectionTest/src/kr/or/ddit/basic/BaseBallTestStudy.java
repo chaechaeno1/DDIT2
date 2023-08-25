@@ -23,6 +23,7 @@ package kr.or.ddit.basic;
  */
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -51,7 +52,7 @@ public class BaseBallTestStudy {
 
 		// 컴퓨터의 난수 Set을 List화
 		ArrayList<Integer> baseBallList = new ArrayList<Integer>(baseBall);
-
+		Collections.shuffle(baseBallList);
 		// 게임 시도 횟수
 		int num = 0;
 
@@ -70,7 +71,7 @@ public class BaseBallTestStudy {
 			System.out.println("사용자의 숫자입력 >>" + userList);
 
 			// 사용자와 컴퓨터의 값 비교(스트라이크, 볼 판정하기)
-			int strikes = 0;
+			int strikes = 0; 
 			int balls = 0;
 
 			for (int i = 0; i < baseBallList.size(); i++) {
