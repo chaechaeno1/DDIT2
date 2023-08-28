@@ -234,9 +234,10 @@ public class PhoneBookTest {
 
 		System.out.print("새로운 전화번호 >>");
 		String newTel = scan.next();
+		scan.nextLine(); //입력 버퍼 비우기
 
 		System.out.print("새로운 주소 >> ");
-		String newAddr = scan.next();
+		String newAddr = scan.nextLine();
 
 		// 같은 key값에 새로운 데이터를 셋팅한 Phone객체를 저장하면 된다.
 		// 새로 값을 입력하면, 그 전에 입력한 값은 사라지고 새로운 값으로 덮어쓰기 된다.
