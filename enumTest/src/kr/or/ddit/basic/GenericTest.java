@@ -96,8 +96,12 @@ public class GenericTest {
 		System.out.println("제네릭 문자열 반환값 ===> "+rtnMg1);
 		System.out.println("제네릭 정수형 반환값 ===> "+rtnMg2);
 		
-		
+		//--------------------------------------------------
+		//NonGeneric 오류 발생 예시(ClassCastException)
+		String temp = (String)ng2.getValue();		
+		System.out.println("temp = "+temp);
 
+		
 	}
 
 }
