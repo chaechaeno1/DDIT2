@@ -43,17 +43,24 @@ public class ThreadTest04 {
 		//협력해서 처리하기
 		startTime = System.currentTimeMillis();
 		
+		// 중요한 점은 쓰레드들이 순서대로 결과를 내지 않을 수 있다는 거예요!
+		// 여러 개의 쓰레드를 배열에 넣어두고, 각 쓰레드를 시작시킵니다.
 		for(SumThread th : sumArr) {
-			th.start();
+			th.start(); // 쓰레드를 시작하면 그 안에 있는 작업이 실행됩니다.
 		}
+		// 이제 쓰레드들이 일을 다 마칠 때까지 기다립니다.
+		// 각각의 쓰레드가 끝날 때까지 기다리는 역할을 하는게 바로 'join'이에요.
+		// 그런데 중간에 누군가가 방해를 한다면(InterruptedException),
+		// 그 예외 상황을 처리해줘야 합니다.
 		for(SumThread th : sumArr) {
 			try {
-				th.join();
+				th.join(); // 쓰레드가 끝날 때까지 기다립니다.
 			} catch (InterruptedException e) {
-				// TODO: handle exception
 			}
 		}
 		
+		// 모든 쓰레드가 일을 마친 후에 시간을 다시 재서
+		// 전체 작업에 걸린 시간을 계산합니다.
 		endTime = System.currentTimeMillis();
 		
 		System.out.println("협력해서 처리한 경과 시간 : "+(endTime - startTime));
