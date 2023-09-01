@@ -34,7 +34,7 @@ public class ThreadTest12_수업 {
 		for (Horse3 h : horses) {
 			h.start();
 		}
-		gb.start();
+		gb.start(); // 말의 현재 위치 출력용 쓰레드 실행
 
 		// 모든 말의 경기가 끝날때까지 기다린다.
 		for (Horse3 h : horses) {
@@ -45,6 +45,8 @@ public class ThreadTest12_수업 {
 			}
 		}
 
+		gb.interrupt();
+
 		try {
 			gb.join();
 		} catch (InterruptedException e) {
@@ -54,10 +56,10 @@ public class ThreadTest12_수업 {
 		System.out.println();
 		System.out.println("경기 끝!!");
 		System.out.println();
-		
-		//등수의 오름차순으로 정렬
+
+		// 등수의 오름차순으로 정렬
 		Arrays.sort(horses);
-		
+
 		System.out.println("======경기결과======");
 		for (Horse3 h : horses) {
 			System.out.println(h);
@@ -157,14 +159,20 @@ class GameBoard extends Thread {
 	public void run() {
 		while (true) {
 			// 모든 말들의 경기가 종료되었는지 여부를 검사
-			if (Horse3.curRank == horses.length) {
+//			if (Horse3.curRank == horses.length) {
+//				break;
+//			}
+
+			// interrupt()메서드를 이용한 종료 처리
+			if (this.isInterrupted()) {
 				break;
 			}
-			//각 텀 사이의 빈 줄 추가
-			for(int i=1;i<=15;i++) {
+
+			// 각 텀 사이의 빈 줄 추가
+			for (int i = 1; i <= 15; i++) {
 				System.out.println();
 			}
-				
+
 			for (Horse3 h : horses) {
 				System.out.print(h.getHorseName() + " : ");
 
@@ -181,7 +189,7 @@ class GameBoard extends Thread {
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
-
+				this.interrupt();
 			}
 		}
 

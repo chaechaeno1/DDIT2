@@ -54,15 +54,34 @@ class ThreadStopTest01 extends Thread {
 class ThreadStopTest02 extends Thread {
 	@Override
 	public void run() {
-		// 방법1 ==> interrupt()메서드와 sleep()메서드를 이용하는 방법
-		try {
-			while (true) {
-				System.out.println("쓰레드 실행 중...");
-				Thread.sleep(1);
+		/*
+		 * // 방법1 ==> interrupt()메서드와 sleep()메서드를 이용하는 방법 try { while (true) {
+		 * System.out.println("쓰레드 실행 중..."); Thread.sleep(1); } } catch
+		 * (InterruptedException e) {
+		 * 
+		 * }
+		 */
+		
+		//방법2
+		while(true) {
+			System.out.println("Thread 실행 중...");
+			
+			/*
+			 * //interrupt()메서드가 호출되었는지 여부 검사 //검사방법 1 ==> 쓰레드의 인스턴스 메서드 중
+			 * isInterrupted()메서드 이용 //isInterrupted()메서드는 interrupt()메서드가 호출되면 true 반환
+			 * if(this.isInterrupted()) { break;
+			 * 
+			 * }
+			 */
+			
+			//검사방법2==> 쓰레드의 정적(static) 메서드인 interrupted()메서드 이용
+			//	interrupted()메서드 ==> interrupt()메서드 호출되면 true 반환
+			if(Thread.interrupted()) {
+				break;
 			}
-		} catch (InterruptedException e) {
-
 		}
+		
+		
 		System.out.println();
 		System.out.println("자원 정리.......");
 		System.out.println("쓰레드 끝.......");
