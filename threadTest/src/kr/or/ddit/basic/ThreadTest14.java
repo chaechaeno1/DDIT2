@@ -90,7 +90,7 @@ class PrintPIThread extends Thread{
 		//계산된 결과 출력
 		System.out.println();
 		System.out.println("결 과 : "+sd.result);
-		System.out.println("PI : "+ Math.PI);
+		System.out.println("P I : "+ Math.PI);
 	
 	}
 
@@ -98,7 +98,9 @@ class PrintPIThread extends Thread{
 
 //원주율을 관리하는 객체(공통으로 사용할 객체)
 class ShareData{
-	public double result;		//계산된 원주율이 저장될 변수
-	public volatile boolean isOk;		//계산이 완료되었는지 여부를 나타내는 변수
-	
+	public double result;			//계산된 원주율이 저장될 변수
+	public volatile boolean isOk;	//계산이 완료되었는지 여부를 나타내는 변수
+	// volatile : 변수가 여러 스레드에서 안전하게 공유되어야 할 때 사용
+	//  ==> CPU의 각 코어에 캐시가 있는데 이 캐시를 사용하지 않고
+	//		직접 메모리에  데이터값을 입출력한다.
 }
