@@ -18,7 +18,7 @@ public class ThreadTest17 {
 	// 동기화 처리가 되지 않은 List
 	private static List<Integer> list1 = new ArrayList<Integer>();
 	
-	// 동기화 처리를 한 List
+	// ★★★★동기화 처리를 한 List
 	private static List <Integer> list2 = 
 			Collections.synchronizedList(new ArrayList<Integer>());
 
