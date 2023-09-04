@@ -9,61 +9,60 @@ package kr.or.ddit.basic;
 public class ThreadTest18 {
 
 	public static void main(String[] args) {
-		WorkObject workObj = new WorkObject();  // WorkObject 객체를 생성
-		
-		
+		WorkObject workObj = new WorkObject(); // WorkObject 객체를 생성
+
 		// ThreadA와 ThreadB를 생성하고 시작
 		ThreadA thA = new ThreadA(workObj);
 		ThreadB thB = new ThreadB(workObj);
-		
+
 		thA.start();
 		thB.start();
-		
-		
+
 	}
 
 }
 
 //WorkObject의 methodA()메서드만 호출하는 쓰레드
-class ThreadA extends Thread{
+class ThreadA extends Thread {
 	private WorkObject workObj;
-	
-	//생성자
+
+	// 생성자
 	public ThreadA(WorkObject workObj) {
 		this.workObj = workObj;
 	}
 
-
 	@Override
 	public void run() {
-		for(int i=1; i<=10; i++) {
+		for (int i = 1; i <= 10; i++) {
 			workObj.methodA();
 		}
-	
-	
+		synchronized (workObj) {
+			workObj.notify();
+		}
+
+
 	}
 }
 
 //WorkObject의 methodB()메서드만 호출하는 쓰레드
-class ThreadB extends Thread{
+class ThreadB extends Thread {
 	private WorkObject workObj;
-	
-	//생성자
+
+	// 생성자
 	public ThreadB(WorkObject workObj) {
 		this.workObj = workObj;
 	}
 
-
 	@Override
 	public void run() {
-		for(int i=1; i<=10; i++) {
+		for (int i = 1; i <= 10; i++) {
 			workObj.methodB();
 		}
-	
-	
+		synchronized (workObj) {
+			workObj.notify();
+		}
 	}
 }
-
 
 //공통으로 사용할 class
 // 이 두 메서드는 synchronized 키워드로 동기화되어 있습니다. 
