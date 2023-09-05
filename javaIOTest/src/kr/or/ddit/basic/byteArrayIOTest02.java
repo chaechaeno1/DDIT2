@@ -22,6 +22,8 @@ public class byteArrayIOTest02 {
 			while(bin.available()>0) {
 				bin.read(temp); //배열 크기만큼 읽어오기
 				bout.write(temp); //배열의 데이터 출력하기
+				
+				System.out.println("반복문 안에서 temp => " + Arrays.toString(temp));
 			}
 			
 			outSrc = bout.toByteArray();
@@ -41,3 +43,11 @@ public class byteArrayIOTest02 {
 	}
 
 }
+
+
+//출력값
+//반복문 안에서 temp => [0, 1, 2, 3]
+//반복문 안에서 temp => [4, 5, 6, 7]
+//반복문 안에서 temp => [8, 9, 6, 7]
+//inSrc => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+//OutSrc => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 6, 7]
