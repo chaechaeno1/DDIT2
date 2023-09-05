@@ -20,8 +20,14 @@ public class byteArrayIOTest02 {
 		try {
 			// bin.available() ==> 읽어올 수 있는(남아있는) 데이터의 개수 반환
 			while(bin.available()>0) {
-				bin.read(temp); //배열 크기만큼 읽어오기
-				bout.write(temp); //배열의 데이터 출력하기
+//				bin.read(temp); //배열 크기만큼 읽어오기
+//				bout.write(temp); //배열의 데이터 출력하기
+				
+				//read(byte[] 배열명) ==> 반환값 : 실제 읽어온 데이터 개수 
+				int len = bin.read(temp);
+				
+				//temp 배열의 내용 중 0번째부터 len 개수만큼 출력
+				bout.write(temp, 0, len);
 				
 				System.out.println("반복문 안에서 temp => " + Arrays.toString(temp));
 			}
