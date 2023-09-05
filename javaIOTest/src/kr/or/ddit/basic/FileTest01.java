@@ -14,6 +14,18 @@ public class FileTest01 {
 		
 //		File file1 = new File("d:/d_other/test.txt"); // 구분 문자를 '/'로 사용
 		File file1 = new File("d:\\d_other\\test.txt"); // 구분 문자를 '\'로 사용
+		System.out.println("파일명 : "+file1.getName());
+		System.out.println("디렉토리 여부 : "+file1.isDirectory());
+		System.out.println("파일 여부 : "+file1.isFile());
+		System.out.println();
+		
+		//폴더명으로 끝남 -> 디렉토리
+		File file2 = new File("d:/d_other");
+		System.out.println("파일명 : "+file2.getName());
+		System.out.println("디렉토리 여부 : "+file2.isDirectory());
+		System.out.println("파일 여부 : "+file2.isFile());
+		System.out.println();
+		
 		
 		
 		
