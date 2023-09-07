@@ -235,7 +235,7 @@ public class PhoneBookTest {
 //			for (String name : phoneBookMap.keySet()) {
 //				Phone p = phoneBookMap.get(name);
 //				oout.writeObject(p);
-//			}
+//			}  
 //			// 모든 자료가 저장된 후 마지막에 null로 저장한다.
 //			oout.writeObject(null);
 
