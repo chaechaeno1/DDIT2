@@ -242,6 +242,8 @@ public class PhoneBookTest {
 			// 방법2 ==> Map객체 자체를 파일로 저장하기
 			oout.writeObject(phoneBookMap);
 			
+			dataChange = false;
+			
 
 			System.out.println("저장이 완료되었습니다.");
 
