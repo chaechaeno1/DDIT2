@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_361"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="D:/김민채/2-2.고급자바(8.22~/common email jars/commons-email-1.5.jar"/>
+	<classpathentry kind="lib" path="D:/김민채/2-2.고급자바(8.22~/조별과제 jar/activation-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/김민채/2-2.고급자바(8.22~/조별과제 jar/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
