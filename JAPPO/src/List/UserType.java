@@ -73,8 +73,7 @@ public class UserType {
 		userList.add(new User("최민호",4,"1999-03-20",2, 500000, 0));
 		userList.add(new User("이태민",8,"2008-10-04",10, 40000, 0));
 		
-		//유저뽑기 이벤트 메서드
-		luckyDraw();
+
 		
 		
 
@@ -83,20 +82,20 @@ public class UserType {
 //		1. 이벤트로 유저 뽑기를 할 계획
 //    - 1~10까지 행운의 숫자 3명을 추첨해 당첨자에게 포인트 만원 주기
 //    - 전체 회원 이름, 포인트 출력	
-	public static void luckyDraw(){
+
 		
 		int arr[] = new int[3];
 		for(int i=0; i<3;i++) {
 			//1~10까지 난수 발생
-			int rnd = (int) (Math.random()*10+1);
-			arr[i] = rnd;
+			int lucky = (int) (Math.random()*10+1);
+			arr[i] = lucky;
 		}
 		for(int rndArr : arr) {
 			System.out.print(rndArr + " ");
 		}
 		
 		
-	}
+
 	
 
 
