@@ -8,9 +8,9 @@ import org.apache.commons.mail.HtmlEmail;
 public class common_naver {
 
 	public static void main(String[] args) {
-		String naverEmail = "sally_kim_@naver.com";
-		String naverPassword = "Tidlsl0525!";
-		String recipientEmail = "chae_ming@naver.com";
+		String naverEmail = "---------@naver.com";
+		String naverPassword = "*********";
+		String recipientEmail = "---------@naver.com";
 
 		try {
 			// 이메일 객체 생성
@@ -25,7 +25,7 @@ public class common_naver {
 			email.setSSLOnConnect(true);
 
 			// 이메일 내용 설정
-			email.setFrom(naverEmail, "김민채"); // 보내는 사람 이름 설정
+			email.setFrom(naverEmail, "보내는사람"); // 보내는 사람 이름 설정
 			email.addTo(recipientEmail); // 수신자 이메일 설정
 			email.setSubject("[긴급] 2023년 10월 2일 임시공휴일 지정!"); // 이메일 제목 설정
 			email.setCharset("UTF-8"); // UTF-8 문자 인코딩 설정
