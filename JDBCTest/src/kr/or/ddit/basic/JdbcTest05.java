@@ -1,11 +1,12 @@
 package kr.or.ddit.basic;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
+
+import kr.or.ddit.util.DBUtil;
 
 /*
  * LPROD테이블에 새로운 데이터를 추가
@@ -18,6 +19,7 @@ import java.util.Scanner;
  */
 
 public class JdbcTest05 {
+	
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -27,10 +29,11 @@ public class JdbcTest05 {
 		ResultSet rs = null;
 
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "pc_09", "java");
-
+			//conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "pc_09", "java");
+			conn = DBUtil.getConnection();
+					
 			// (1) lprod_id값 구하기 ==> 현재의 lprod_id값 중 제일 큰 값보다 1 큰 값으로 한다.
 			String sql = "select nvl(max(lprod_id),0) maxnum from lprod"; // maxnum은 alias
 			pstmt = conn.prepareStatement(sql);
@@ -91,8 +94,8 @@ public class JdbcTest05 {
 				System.out.println("insert 실패...");
 			}
 
-		} catch (ClassNotFoundException e) { //exception 위에 다른 예외사항 선언
-			e.printStackTrace();
+		//} catch (ClassNotFoundException e) { //exception 위에 다른 예외사항 선언
+			//e.printStackTrace();
 		} catch (Exception e) { //모든사항 예외처리하므로 이 아래에 다른 예외처리를 하면 오류발생
 			e.printStackTrace();
 		} finally {

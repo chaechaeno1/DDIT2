@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 public class DBUtil {
 	static {
 		try {
-			Class.forName("oracle.jdbc.dirver.OracleDriver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ");
 			e.printStackTrace();
@@ -18,7 +18,7 @@ public class DBUtil {
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "pc_09", "java");
 			
 		} catch (Exception e) {
 			System.out.println("DB 연결 실패...");
