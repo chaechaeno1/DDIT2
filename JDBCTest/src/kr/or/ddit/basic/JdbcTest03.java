@@ -35,10 +35,11 @@ public class JdbcTest03 {
 //      int min = firInput > scdInput ? scdInput : firInput;
 //      int max = firInput > scdInput ? firInput : scdInput;
       // 3
+
       int min = Math.min(firInput, scdInput);
       int max = Math.max(firInput, scdInput);
 
-      Connection con = null;
+      Connection conn = null;
       Statement stm = null;
       ResultSet rss = null;
       PreparedStatement pstmt = null;
@@ -48,7 +49,7 @@ public class JdbcTest03 {
          Class.forName("oracle.jdbc.driver.OracleDriver");
 
          // DB연결
-         con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "PC_24_04", "java");
+         conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "PC_24_04", "java");
 
          // createStatement 객체
          /*
@@ -56,7 +57,7 @@ public class JdbcTest03 {
           * "AND LPROD_ID <=" + max; String sql =
           * "SELECT * FROM LPROD WHERE LPROD_ID BETWEEN " + min + " AND " + max;
           * 
-          * // Statement stm = con.createStatement();
+          * // Statement stm = conn.createStatement();
           * 
           * // sql문을 서버에 보내기 rss = stm.executeQuery(sql);
           */
@@ -64,7 +65,7 @@ public class JdbcTest03 {
          // PreparedStatement 객체
          String sql = "SELECT * FROM LPROD WHERE LPROD_ID >= ? AND LPROD_ID <= ?";
 
-         pstmt = con.prepareStatement(sql);
+         pstmt = conn.prepareStatement(sql);
          pstmt.setInt(1, min);
          pstmt.setInt(2, max);
 
@@ -98,9 +99,9 @@ public class JdbcTest03 {
             } catch (SQLException e) {
                e.printStackTrace();
             }
-         if (con != null)
+         if (conn != null)
             try {
-               con.close();
+               conn.close();
             } catch (SQLException e) {
                e.printStackTrace();
             }
