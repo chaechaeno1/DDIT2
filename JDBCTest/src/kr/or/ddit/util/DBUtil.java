@@ -18,7 +18,8 @@ public class DBUtil {
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "pc_09", "java");
+			conn = DriverManager.getConnection(
+					"jdbc:oracle:thin:@localhost:1521:xe", "pc_09", "java");
 			
 		} catch (Exception e) {
 			System.out.println("DB 연결 실패...");
