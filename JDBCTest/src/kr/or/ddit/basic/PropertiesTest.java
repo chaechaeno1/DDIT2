@@ -2,6 +2,7 @@ package kr.or.ddit.basic;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Properties;
 
 public class PropertiesTest {
@@ -31,7 +32,9 @@ public class PropertiesTest {
 			
 			
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+		} finally {
+			if(fin!=null) try {fin.close();} catch(IOException e) {} //스트림닫기
 		}
 	}
 

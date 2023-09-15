@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import kr.or.ddit.util.DBUtil;
+import kr.or.ddit.util.DBUtil2;
 
 /*
 	회원 관리를 하는 프로그램을 작성하시오.
@@ -357,7 +358,8 @@ public class JdbcTest06_1 {
 		System.out.println("===================================================================");
 		
 		try {
-			conn = DBUtil.getConnection();
+			//conn = DBUtil.getConnection();
+			conn = DBUtil2.getConnection();
 			String sql = "select * from mymember";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
