@@ -16,7 +16,7 @@ public class DBUtil3 {
 	
 	static {
 		// 객체 생성
-		bundle = ResourceBundle.getBundle("kr.or.ddit.jbdc.config.dbinfo");
+		bundle = ResourceBundle.getBundle("kr.or.ddit.jdbc.config.dbinfo");
 		
 		try {
 			Class.forName(bundle.getString("driver"));				
