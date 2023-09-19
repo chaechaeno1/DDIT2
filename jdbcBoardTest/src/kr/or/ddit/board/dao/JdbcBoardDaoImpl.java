@@ -222,13 +222,87 @@ public class JdbcBoardDaoImpl implements IJdbcBoardDao {
 
 	@Override
 	public List<JdbcBoardVO> getSearchBoard(String title) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<JdbcBoardVO> boardList = null; //반환값이 저장될 변수
+		
+		try {
+			conn = DBUtil3.getConnection();
+			String sql = "select * from jabc_board "
+					+ "where board_title like '%' || ? || '%'"
+					+ "order by board_no desc";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			
+			rs= pstmt.executeQuery();
+			
+			while(rs.next()) {
+				if(boardList==null) boardList = new ArrayList<JdbcBoardVO>();
+				
+				JdbcBoardVO boardVo = new JdbcBoardVO();
+				boardVo.setBoard_no(rs.getInt("board_no"));
+				boardVo.setBoard_title(rs.getString("board_title"));
+				boardVo.setBoard_writer(rs.getString("board_writer"));
+				boardVo.setBoard_date(rs.getString("board_date"));
+				boardVo.setBoard_cnt(rs.getInt("board_cnt"));
+				boardVo.setBoard_content(rs.getString("board_content"));
+				
+				boardList.add(boardVo);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException e) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+				}
+		}
+		return boardList;
 	}
 
 	@Override
 	public int setCountIncrement(int boardNo) {
-		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int cnt = 0; // 반환값이 저장될 변수
+		try {
+			conn = DBUtil3.getConnection();
+			String sql = "update jdbc_board set "
+						+ "board_cnt = board_cnt + 1 "
+						+ "where board_no = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+
+			cnt = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+				}
+		}
 		return 0;
 	}
 
