@@ -39,8 +39,7 @@ public class JdbcBoardServiceImpl implements IJdbcBoardSerivce {
 
 	@Override
 	public List<JdbcBoardVO> getAllBoard() {
-		// TODO Auto-generated method stub
-		return getAllBoard();
+		return dao.getAllBoard();
 	}
 
 	@Override
@@ -52,7 +51,6 @@ public class JdbcBoardServiceImpl implements IJdbcBoardSerivce {
 
 	@Override
 	public List<JdbcBoardVO> getSearchBoard(String title) {
-		// TODO Auto-generated method stub
 		return dao.getSearchBoard(title);
 	}
 

@@ -30,7 +30,7 @@ public class JdbcBoardDaoImpl implements IJdbcBoardDao {
 		try {
 			conn = DBUtil3.getConnection();
 			String sql = "insert into jdbc_board"
-					+ "(board_no, board_title, board_wirter, board_date, board_cnt, board_content) "
+					+ "(board_no, board_title, board_writer, board_date, board_cnt, board_content) "
 					+ " values(board_seq.nextval, ?, ?, sysdate, 0, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardVo.getBoard_title());
@@ -53,7 +53,7 @@ public class JdbcBoardDaoImpl implements IJdbcBoardDao {
 				} catch (SQLException e) {
 				}
 		}
-		return 0;
+		return cnt;
 	}
 
 	@Override
@@ -83,7 +83,7 @@ public class JdbcBoardDaoImpl implements IJdbcBoardDao {
 				} catch (SQLException e) {
 				}
 		}
-		return 0;
+		return cnt;
 	}
 
 	@Override
@@ -94,8 +94,8 @@ public class JdbcBoardDaoImpl implements IJdbcBoardDao {
 		try {
 			conn = DBUtil3.getConnection();
 			String sql = "update jdbc_board set "
-						+ "board_title = ?, board_content =?, board_date = sysdate"
-						+ "where board_no = ? ";
+						+ "board_title = ?, board_content =?, board_date = sysdate "
+						+ "where board_no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardVo.getBoard_title());
 			pstmt.setString(2, boardVo.getBoard_content());
@@ -117,7 +117,7 @@ public class JdbcBoardDaoImpl implements IJdbcBoardDao {
 				} catch (SQLException e) {
 				}
 		}
-		return 0;
+		return cnt;
 	}
 
 	@Override
@@ -128,7 +128,7 @@ public class JdbcBoardDaoImpl implements IJdbcBoardDao {
 		List<JdbcBoardVO> boardList = null; //반환값이 저장될 변수
 		try {
 			conn = DBUtil3.getConnection();
-			String sql = "select * from jabc_board order by board_no desc";
+			String sql = "select * from jdbc_board order by board_no desc";
 			pstmt = conn.prepareStatement(sql);
 			rs= pstmt.executeQuery();
 			
@@ -178,7 +178,7 @@ public class JdbcBoardDaoImpl implements IJdbcBoardDao {
 		
 		try {
 			conn = DBUtil3.getConnection();
-			String sql = "select board_no, board_title, board_wirter, "
+			String sql = "select board_no, board_title, board_writer, "
 					+ "to_char(board_date, 'YYYY-MM-DD') board_date, board_cnt, "
 					+ "board_content from jdbc_board "
 					+ "where board_no = ?";
@@ -199,7 +199,7 @@ public class JdbcBoardDaoImpl implements IJdbcBoardDao {
 			}
 			
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		} finally {
 			if (rs != null)
 				try {
@@ -229,7 +229,7 @@ public class JdbcBoardDaoImpl implements IJdbcBoardDao {
 		
 		try {
 			conn = DBUtil3.getConnection();
-			String sql = "select * from jabc_board "
+			String sql = "select * from jdbc_board "
 					+ "where board_title like '%' || ? || '%'"
 					+ "order by board_no desc";
 			pstmt = conn.prepareStatement(sql);
@@ -303,7 +303,7 @@ public class JdbcBoardDaoImpl implements IJdbcBoardDao {
 				} catch (SQLException e) {
 				}
 		}
-		return 0;
+		return cnt;
 	}
 
 }
