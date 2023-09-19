@@ -12,6 +12,21 @@ import kr.or.ddit.util.DBUtil3;
 import kr.or.ddit.vo.MemberVO;
 
 public class MemberDaoImpl implements IMemberDao {
+	//1) 자신 class의 참조값이 저장될 변수를 private static으로 선언
+	private static MemberDaoImpl dao;
+	
+	//2) 모든 생성자의 접근제한자를 private으로 선언
+	//		==> 생성자가 없으면 기본 생성자를 작성해야 한다.	
+	private MemberDaoImpl() {}
+
+	//3) 자신의 class의 인스턴스를 생성하고 반환하는 메서드를 public static으로 작성
+	//(이 메서드의 이름은 보통 getInstance로 한다.)
+	public static MemberDaoImpl getInstance() {
+		if(dao==null) dao = new MemberDaoImpl();
+		return dao;
+	}
+	
+
 
 	@Override
 	public int insertMember(MemberVO memVo) {
