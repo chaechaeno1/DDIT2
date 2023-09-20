@@ -40,6 +40,9 @@
 	
 	<!-- DB에서 처리될 SQL문들이 작성된 mapper파일들을 등록하는 부분 -->
 	<!-- 형식) <mapper resource="경로명/파일명.xml"/> -->
+	<mappers>
+		<mapper resource="kr/or/ddit/mybatis/mappers/lprod-mapper.xml"/>
+	</mappers>
 	
 	
 	
