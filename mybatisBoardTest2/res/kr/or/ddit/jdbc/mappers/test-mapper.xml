@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이 문서는 MyBatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0/EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test">
+
+	<!-- 1번째 -->
+	<insert id="insertBoard" parameterType="testVo">
+	insert into jdbc_board (board_no, board_title, board_writer, board_date, 
+	board_cnt, board_content) values(board_seq.nextval, #{board_title}, 
+	#{board_writer}, sysdate, 0, #{board_content})			
+	</insert>
+	
+	<!-- 2번째 -->
+	<delete id="deleteBoard" parameterType="int">
+	delete from jdbc_board where board_no = #{board_no}			
+	</delete>
+
+	<!-- 3번째 -->
+	<update id="updateBoard" parameterType="testVo">
+	update jdbc_board set board_title = #{board_title}, 
+	board_content = #{board_content}, board_date = sysdate 
+	where board_no = #{board_no}			
+	</update>
+	
+	<!-- 4번째 -->
+	<select id="selectBoard" resultType="testVo">
+	select * from jdbc_board order by board_no desc			
+	</select>
+	
+	<!-- 5번째 -->
+	<select id="selectBoardNumber" parameterType="int" resultType="testVo">
+	select board_no, board_title, board_writer,
+	to_char(board_date, 'YYYY-MM-DD') board_date, board_cnt,
+	board_content from jdbc_board where board_no = #{board_no}
+	</select>
+	
+	<!-- 6번째 -->
+	<select id="selectSearch" parameterType="String" resultType="testVo">
+	 select * from jdbc_board where board_title like '%' || #{board_title} || '%' order by board_no desc
+			
+	</select>
+	
+	<!-- 7번째 -->
+	<update id="updateCnt" parameterType="int">
+	 update jdbc_board set board_cnt = board_cnt + 1
+	 where board_no = #{board_no}
+			
+	</update>
+	
+
+</mapper>	
+
+
+
+
+
+
+
+
+
+
+

@@ -86,7 +86,7 @@ public class MemberDaoImpl implements IMemberDao {
 
 		try {
 			session = MybatisUtil.getSqlSession();
-			cnt = session.update("memner.updateMember", memVo);
+			cnt = session.update("member.updateMember", memVo);
 			if (cnt > 0) {
 				session.commit();
 			}
