@@ -42,6 +42,7 @@
 	<!-- 형식) <mapper resource="경로명/파일명.xml"/> -->
 	<mappers>
 		<mapper resource="kr/or/ddit/mybatis/mappers/lprod-mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mappers/jdbc-mapper.xml"/>
 	</mappers>
 	
 	
