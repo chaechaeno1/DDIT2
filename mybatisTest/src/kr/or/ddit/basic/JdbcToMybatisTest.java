@@ -1,14 +1,11 @@
 package kr.or.ddit.basic;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Scanner;
 
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kr.or.ddit.util.MybatisUtil;
 import kr.or.ddit.vo.LprodVO;
 
 /*
@@ -25,7 +22,7 @@ public class JdbcToMybatisTest {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-
+/*
 		// 1. MyBatis 환경 설정파일 읽어오기 -> SqlSessionFactory객체 생성하기
 		InputStream in = null;
 		SqlSessionFactory sqlSessionFactory = null;
@@ -45,26 +42,28 @@ public class JdbcToMybatisTest {
 				} catch (IOException e) {
 				}
 		}
-
+*/
+		
+		
 		// ==============================================================================
 
 		SqlSession session = null;
-		
+
 		try {
-			session = sqlSessionFactory.openSession();
+			session = MybatisUtil.getSqlSession();
 
 			int maxnum = session.selectOne("jdbc.getMaxid");
 			maxnum++;
-			
+
 			String gu;
 			int count = 0;
 
 			do {
 				System.out.print("상품 분류 코드(LPROD_GU) 입력 >> ");
 				gu = scan.next();
-				
+
 				count = session.selectOne("jdbc.getLprodguCount", gu);
-				
+
 				if (count > 0) {
 					System.out.println("입력한 상품 분류 코드 " + gu + "는(은) 이미 등록된 코드입니다.");
 					System.out.println("다른 코드로 다시 입력하세요.");
@@ -88,7 +87,7 @@ public class JdbcToMybatisTest {
 			int cnt = session.insert("jdbc.insertLprod", lvo);
 
 			if (cnt > 0) {
-				session.commit(); //커밋필수!!
+				session.commit(); // 커밋필수!!
 				System.out.println("insert 성공!!");
 			} else {
 				System.out.println("insert 실패...");
