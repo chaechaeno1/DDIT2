@@ -21,6 +21,7 @@ public class JdbcBoardController {
 		new JdbcBoardController().boardStart();
 
 	}
+
 	// 시작 메서드
 	public void boardStart() {
 		String searchTitle = null;

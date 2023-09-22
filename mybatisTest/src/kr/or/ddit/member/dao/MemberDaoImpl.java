@@ -103,9 +103,9 @@ public class MemberDaoImpl implements IMemberDao {
 	@Override
 	public List<MemberVO> getAllMember() {
 		SqlSession session = null;
-	
+
 		List<MemberVO> memList = null;
-			
+
 		try {
 			session = MybatisUtil.getSqlSession();
 			memList = session.selectList("member.getAllMember");
@@ -119,55 +119,48 @@ public class MemberDaoImpl implements IMemberDao {
 		return memList;
 	}
 
-		
 	@Override
 	public int getMemIdCount(String memId) {
-		
+
 		SqlSession session = null;
-	    int count = 0;
+		int count = 0;
 
-	    try {
-	        session = MybatisUtil.getSqlSession();
+		try {
+			session = MybatisUtil.getSqlSession();
 
-	        count = session.selectOne("member.getMemIdCount", memId);
+			count = session.selectOne("member.getMemIdCount", memId);
 
-	        if (count == 0) {
-	            System.out.println("검색된 데이터가 하나도 없습니다...");
-	        }
 
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        if (session != null)
-	            session.close();
-	    }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
 
-	    return count;
+		return count;
 	}
 
 	@Override
 	public int updateMember2(Map<String, String> paramMap) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
+		SqlSession session = null;
+		int cnt = 0;
 
-	/*
-	 * @Override public int updateMember2(Map<String, String> paramMap) { Connection
-	 * conn = null; PreparedStatement pstmt = null; int cnt = 0;
-	 * 
-	 * // key값 정보 ==> 회원ID(memid), 수정할컬럼명(field), 수정할데이터(data) try { conn =
-	 * DBUtil3.getConnection(); String sql = "update mymember set " +
-	 * paramMap.get("field") + " = ? " + " where mem_id = ?"; pstmt =
-	 * conn.prepareStatement(sql); pstmt.setString(1, paramMap.get("data"));
-	 * pstmt.setString(2, paramMap.get("memid"));
-	 * 
-	 * 
-	 * cnt = pstmt.executeUpdate(); } catch (SQLException e) { e.printStackTrace();
-	 * } finally { if(pstmt!=null) try { pstmt.close(); } catch(SQLException e) {}
-	 * if(conn!=null) try { conn.close(); } catch(SQLException e) {} }
-	 * 
-	 * return cnt; }
-	 */
+		try {
+			session = MybatisUtil.getSqlSession();
+			cnt = session.update("member.updateMember2", paramMap);
+
+			if (cnt > 0)session.commit();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+
+		}
+
+		return cnt;
+	}
 
 }
