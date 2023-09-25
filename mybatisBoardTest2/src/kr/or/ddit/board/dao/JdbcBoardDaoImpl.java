@@ -148,7 +148,7 @@ public class JdbcBoardDaoImpl implements IJdbcBoardDao {
 		
 		try {
 			session = MybatisUtil.getSqlSession();
-			boardList = session.selectList("test.selectSearch");
+			boardList = session.selectList("test.getSearchBoard", title);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

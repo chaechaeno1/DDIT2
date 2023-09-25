@@ -38,8 +38,9 @@
 	</select>
 	
 	<!-- 6번째 -->
-	<select id="selectSearch" parameterType="String" resultType="testVo">
-	 select * from jdbc_board where board_title like '%' || #{board_title} || '%' order by board_no desc
+	<select id="getSearchBoard" parameterType="String" resultType="testVo">
+	 select * from jdbc_board where board_title 
+	 like '%' || #{board_title} || '%' order by board_no desc
 			
 	</select>
 	
