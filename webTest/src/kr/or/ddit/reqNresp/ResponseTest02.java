@@ -23,10 +23,17 @@ public class ResponseTest02 extends HttpServlet {
 	 	재 요청하는 방식 (이때 GET방식으로 요청하기 때문에 URL주소의 길이에 제한이 있다.)
 	 	
 	 	사용은 HttpServeltResponse객체의 sendRedirect()메서드를 이용한다.
-	 	
-	 	
+	 	형식) response객체.sendRedirect("이동할 URL주소");
+	 			==> '이동할 URL주소'는 전체 URI경로를 지정해 주어야 한다.
 	 	
 	 */
+
+		//redirect는 Request객체를 공유하지 않는다.
+		request.setAttribute("tel", "010-9999-9999");
+		
+		response.sendRedirect(request.getContextPath()+"/redirectTest.do");
+		
+		
 		
 	}
 
