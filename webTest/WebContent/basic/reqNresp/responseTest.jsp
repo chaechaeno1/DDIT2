@@ -9,13 +9,13 @@
 <body>
 <h3>forward방식, Redirect방식 연습</h3>
 <br><hr><br>
-<form action="<%= request.getContextPath()%>/responseTest01.do">
+<form action="<%= request.getContextPath()%>/responseTest01.do" method="post">
 forward 방식 : <input type="text" name="username">
 <input type="submit" value="확인">
 </form>
 <br><hr><br>
 
-<form action="<%= request.getContextPath()%>/responseTest01.do">
+<form action="<%= request.getContextPath()%>/responseTest01.do" method="post">
 redirect 방식 : <input type="text" name="username">
 <input type="submit" value="확인">
 </form>

@@ -1,6 +1,8 @@
 package kr.or.ddit.reqNresp;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +34,14 @@ public class ResponseTest01 extends HttpServlet {
 	 */
 
 		request.setAttribute("tel", "010-1234-5678");
+		
+		//다른 문서로 이동하기
+		//request객체의 getRequestDispatcher()메서드에 이동할 서블릿이나 JSP를 지정해주는데
+		//전체 URI경로 중에서 ContextPath 이후의 경로를 지정해준다.
+		
+		//이동할 문서의 경로가 'webTest/forwardTest.do'일 때 
+		RequestDispatcher rd = request.getRequestDispatcher("/forwardTest.do");
+		rd.forward(request, response);
 		
 		
 	}
