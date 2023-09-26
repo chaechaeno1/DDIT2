@@ -15,7 +15,7 @@ forward 방식 : <input type="text" name="username">
 </form>
 <br><hr><br>
 
-<form action="<%= request.getContextPath()%>/responseTest01.do" method="post">
+<form action="<%= request.getContextPath()%>/responseTest02.do" method="post">
 redirect 방식 : <input type="text" name="username">
 <input type="submit" value="확인">
 </form>

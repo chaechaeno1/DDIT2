@@ -24,7 +24,8 @@ request.setCharacterEncoding("utf-8");
 		String userName = request.getParameter("username");
 
 		//setAttribute()메서드로 보낸 데이터 구하기 (형변환 필수)
-		String tel = (String) request.getAttribute("tel");
+		//String tel = (String) request.getAttribute("tel");
+		String tel = request.getParameter("tel");
 		
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");

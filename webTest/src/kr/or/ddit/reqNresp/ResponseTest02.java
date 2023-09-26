@@ -1,6 +1,8 @@
 package kr.or.ddit.reqNresp;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,10 +31,22 @@ public class ResponseTest02 extends HttpServlet {
 	 */
 
 		//redirect는 Request객체를 공유하지 않는다.
-		request.setAttribute("tel", "010-9999-9999");
+//		request.setAttribute("tel", "010-9999-9999");
 		
-		response.sendRedirect(request.getContextPath()+"/redirectTest.do");
+//		response.sendRedirect(request.getContextPath()+"/redirectTest.do");
 		
+		request.setCharacterEncoding("utf-8");
+		
+		// 파라미터 데이터를 받는다.
+		String userName = request.getParameter("username");
+		String tel = "010-7777-7777";
+		
+		//URI경로에 한글이 포함될 경우에는 URLEncoder객체를 이용하여 인코딩해서 지정해주어야 한다.
+		userName = URLEncoder.encode(userName, "utf-8");
+		
+		
+		response.sendRedirect(request.getContextPath()
+				+"/redirectTest.do?username="+userName+"&tel=" + tel);
 		
 		
 	}
