@@ -22,13 +22,9 @@ public class CookieCountDelServlet extends HttpServlet {
 
 		Cookie[] cookieArr = request.getCookies();
 
-		out.println("<html>");
-		out.println("<head><meta charset='utf-8'><title>쿠키 삭제</title></head>");
-		out.println("<body>");
 		if (cookieArr != null) {
 			for (Cookie cookie : cookieArr) {
-				String name = cookie.getName();
-				if ("vcnt".equals(name)) {
+				if ("cnt".equals(cookie.getName())) {
 					cookie.setMaxAge(0);
 					response.addCookie(cookie);
 
@@ -36,9 +32,15 @@ public class CookieCountDelServlet extends HttpServlet {
 			}
 
 		}
+
+		out.println("<html>");
+		out.println("<head><meta charset='utf-8'><title>쿠키 카운트</title></head>");
+		out.println("<body>");
+
 		out.println("<h3>count가 초기화 되었습니다.</h3>");
 		out.println("<a href='" + request.getContextPath() + "/basic/cookie/cookieTest02.jsp'>시작 문서로 가기</a>");
-		
+		out.println("</body></html>");
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
