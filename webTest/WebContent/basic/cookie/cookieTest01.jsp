@@ -8,7 +8,7 @@
 </head>
 <body>
 <a href="<%=request.getContextPath()%>/cookieAdd.do">Cookie 정보 저장하기</a><br><br>
-<a href="<%=request.getContextPath()%>/cookieAdd.do">Cookie 정보 읽어오기</a><br><br>
-<a href="<%=request.getContextPath()%>/cookieAdd.do">Cookie 정보 삭제하기</a><br><br>
+<a href="<%=request.getContextPath()%>/cookieRead.do">Cookie 정보 읽어오기</a><br><br>
+<a href="<%=request.getContextPath()%>/cookieDelete.do">Cookie 정보 삭제하기</a><br><br>
 </body>
 </html>

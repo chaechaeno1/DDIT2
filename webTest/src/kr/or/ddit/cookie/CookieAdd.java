@@ -2,6 +2,7 @@ package kr.or.ddit.cookie;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,11 +30,12 @@ public class CookieAdd extends HttpServlet {
 		//		- '쿠키값'에 한글이 포함되어 있을 경우에는 URLEncoder.encode()메서드로 인코딩 후 저장
 		//		- 하나의 쿠키는 4KB(4096byte)까지 저장 가능
 		//		- 하나의 도메인 당 20개 (총 300개)까지 가능
-		Cookie nameCookie = new Cookie("name","홍길동");
-		Cookie ageCookie1 = new Cookie("age", "20"); //나이라고해서 값에 int형을 쓰면 오류남
+		//Cookie nameCookie = new Cookie("name","홍길동");
+		Cookie nameCookie = new Cookie("name",URLEncoder.encode("홍길동","utf-8"));
+		Cookie ageCookie1 = new Cookie("age1", "20"); //나이라고해서 값에 int형을 쓰면 오류남
 		int age = 30;
-		Cookie ageCookie2 = new Cookie("age", age+""); //int형 변수에 문자형 더하면 문자열로 변환
-		//Cookie ageCookie2 = new Cookie("age", String.valueOf(age));
+		//Cookie ageCookie2 = new Cookie("age", age+""); //int형 변수에 문자형 더하면 문자열로 변환
+		Cookie ageCookie2 = new Cookie("age2", String.valueOf(age));
 		Cookie genderCookie = new Cookie("gender", "Female");
 		
 		
@@ -70,12 +72,7 @@ public class CookieAdd extends HttpServlet {
 		out.println("</body></html>");
 		
 		
-		
-		
-		
-		
-		
-		
+
 	}
 
 	
