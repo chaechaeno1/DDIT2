@@ -1,6 +1,7 @@
 package kr.or.ddit.cookie;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +17,11 @@ public class CookieAdd extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		
+		
 		// Cookie를 저장하는 방법 및 순서
 		
 		// 1. Cookie객체를 생성 ==> '쿠키이름', '쿠키값'은 문자열
@@ -52,6 +58,19 @@ public class CookieAdd extends HttpServlet {
 		response.addCookie(ageCookie1);
 		response.addCookie(ageCookie2);
 		response.addCookie(genderCookie);
+		//=================================================================================
+		
+		out.println("<html>");
+		out.println("<head><meta charset='utf-8'><title>쿠키 저장</title></head>");
+		out.println("<body>");
+		out.println("<h3>Cookie가 저장되었습니다.</h3><br><hr><br>");
+
+		out.println("<a href='"+ request.getContextPath()+
+							"/basic/cookie/cookieTest01.jsp'>시작 문서로 가기</a>");
+		out.println("</body></html>");
+		
+		
+		
 		
 		
 		
