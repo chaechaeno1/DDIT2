@@ -77,6 +77,7 @@ public class SessionRead extends HttpServlet {
 		out.println("세션 최근 접근 시간 : "+ session.getLastAccessedTime()+"<br><br>");
 		
 		// 세션의 유효시간 ==> (초 단위)
+		// 유효시간의 설정은 Session객체.setMaxInactiveInterval(설정시간);
 		out.println("세션 유효 시간 : "+ session.getMaxInactiveInterval()+"<br><br>");
 		
 		out.println("<h3>Session값이 저장되었습니다.</h3><br><br>");
