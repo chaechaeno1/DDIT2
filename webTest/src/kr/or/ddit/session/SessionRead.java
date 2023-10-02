@@ -59,6 +59,7 @@ public class SessionRead extends HttpServlet {
 			out.println("<li>" + sessionKey +" : "+ session.getAttribute(sessionKey)+"</li>");			
 		}
 		if(cnt==0) out.println("<li>세션이 하나도 없습니다.</li>");
+	
 		
 		out.println("</ol>");
 		
@@ -77,10 +78,10 @@ public class SessionRead extends HttpServlet {
 		out.println("세션 최근 접근 시간 : "+ session.getLastAccessedTime()+"<br><br>");
 		
 		// 세션의 유효시간 ==> (초 단위)
-		// 유효시간의 설정은 Session객체.setMaxInactiveInterval(설정시간);
+		// 유효시간의 설정은 Session객체.setMaxInactiveInterval(설정시간)으로 설정할 수 있다.
 		out.println("세션 유효 시간 : "+ session.getMaxInactiveInterval()+"<br><br>");
 		
-		out.println("<h3>Session값이 저장되었습니다.</h3><br><br>");
+
 		out.println("<a href='"+request.getContextPath()+"/basic/session/sessionTest.jsp'>시작문서로 이동</a>");
 		out.println("</body></html>");
 		
