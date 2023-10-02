@@ -8,9 +8,10 @@
 </head>
 <body>
 
-<h3>cookie연습용 main페이지 입니다.</h3>
+<h2>cookie연습용 main페이지 입니다.</h2>
 
-<a href="<%=request.getContextPath()%>/cookieLogin.do">Login 창으로 이동</a><br><br>
+<a href="<%=request.getContextPath()%>/basic/cookie/cookieLogin.jsp">Login 창으로 이동</a>
+
 
 </body>
 </html>
