@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,13 +11,13 @@
 	// JSP문서에서 HttpSession객체는 'session'이라는 이름으로 이미 생성되어 있다.
 
 // 세션에 저장된 '로그인 정보' 가져오기
-String loginId = (String) session.getAttribute("LOGINID");
+MemberVO loginVo = (MemberVO) session.getAttribute("loginMember");
 %>
 
 </head>
 <body>
 	<%
-		if (loginId == null) { //로그인이 안되었을 때...
+		if (loginVo == null) { //로그인이 안되었을 때...
 	%>
 	<form action="<%=request.getContextPath()%>/sessionLoginDB.do"
 		method="post">
@@ -46,11 +47,11 @@ String loginId = (String) session.getAttribute("LOGINID");
 	<%
 		} else { //로그인 되었을 때...
 	%>
-	<h2><%=loginId%>님 반갑습니다.
+	<h2><%=loginVo%>님 반갑습니다.
 	</h2>
 	<br>
 	<br>
-	<a href="<%=request.getContextPath()%>/sessionLogout.do">로그아웃</a>
+	<a href="<%=request.getContextPath()%>/sessionLogoutDB.do">로그아웃</a>
 
 	<%
 		}

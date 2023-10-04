@@ -6,8 +6,9 @@
 
 <mapper namespace="member">
 
-	<select id="selectMem" parameterType="String" resultType="memVo">
-	 select*from mymember where mem_id=#{}' and mem_pass=#{};
+	<!-- #{} data값이 하나면 vo, 두개 이상이면 map 혹은 vo -->
+	<select id="getLoginMember" parameterType="memVo" resultType="memVo">
+	 	select * from mymember where mem_id=#{mem_id} and mem_pass=#{mem_pass}
 	</select>
 
 </mapper>	
