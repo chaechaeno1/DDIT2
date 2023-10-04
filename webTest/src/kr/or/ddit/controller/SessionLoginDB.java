@@ -20,7 +20,7 @@ public class SessionLoginDB extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IMemberService service;
 	
-	private SessionLoginDB() {
+	public SessionLoginDB() {
 		service=MemberServiceImpl.getInstance();
 	}
 

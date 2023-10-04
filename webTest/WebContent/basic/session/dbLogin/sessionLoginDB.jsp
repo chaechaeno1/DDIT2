@@ -47,9 +47,9 @@ MemberVO loginVo = (MemberVO) session.getAttribute("loginMember");
 	<%
 		} else { //로그인 되었을 때...
 	%>
-	<h2><%=loginVo%>님 반갑습니다.
+	<h2><%=loginVo.getMem_name()%>님 반갑습니다.<br>
+	<%=loginVo.getMem_id()%>님 반갑습니다.
 	</h2>
-	<br>
 	<br>
 	<a href="<%=request.getContextPath()%>/sessionLogoutDB.do">로그아웃</a>
 
