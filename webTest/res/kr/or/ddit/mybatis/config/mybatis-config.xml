@@ -23,6 +23,7 @@
 	
 	<typeAliases>
 		<typeAlias type="kr.or.ddit.vo.MemberVO" alias="memVo"/>
+		<typeAlias type="kr.or.ddit.vo.LprodVO" alias="lprodVo"/>
 	</typeAliases> 
 	
 	<!-- DB연결 설정 -->
@@ -42,6 +43,7 @@
 	<!-- 형식) <mapper resource="경로명/파일명.xml"/> -->
 	<mappers>
 		<mapper resource="kr/or/ddit/mybatis/mappers/member-mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mappers/lprod-mapper.xml"/>
 	</mappers>
 	
 	
