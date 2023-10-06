@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import kr.or.ddit.fileupload.service.FileinfoServiceImpl;
+import kr.or.ddit.fileupload.service.IFileinfoService;
 import kr.or.ddit.vo.FileInfoVO;
 
 /*
@@ -118,6 +120,20 @@ public class FileUpload extends HttpServlet {
 			} //if문 끝
 			
 		} //for문 끝
+		
+		//Upload된 파일 정보를 DB에 추가한다.
+		IFileinfoService service = FileinfoServiceImpl.getInstance();
+		
+		//List에 저장된 데이터들을 하나씩 차례로 DB에 추가한다.
+		for(FileInfoVO fvo: fileList) {
+			service.insertFileinfo(fvo);
+		}
+		
+		//작업이 완료되면 파일 목록을 보여주는 페이지로 이동한다.
+		response.sendRedirect(request.getContextPath() + "/fileList.do");
+		
+		
+		
 
 	} // doPost()메서드 끝..
 	//============================================================================
