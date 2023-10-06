@@ -106,7 +106,7 @@ public class FileUpload extends HttpServlet {
 				fvo.setFile_size( (long)Math.ceil(part.getSize()/1024.0));
 				
 				//파일을 지정한 폴더에 저장하기
-				//part객체의 wrtie()메서드를 이용한다.
+				//part객체의 write()메서드를 이용한다.
 				try {
 					part.write(uploadPath+File.separator+saveFileName); //파일 저장
 				} catch (Exception e) {
