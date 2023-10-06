@@ -45,7 +45,8 @@ List<FileInfoVO> fileList = (List<FileInfoVO>)request.getAttribute("fileList");
 			<td><%=fvo.getOrigin_file_name() %></td>
 			<td><%=fvo.getFile_size() %></td>
 			<td><%=fvo.getFile_date() %></td>
-			<td> - </td>
+			<!-- 띄어쓰기있으면 안됨!! ▽ -->
+			<td> <a href="<%=request.getContextPath()%>/fileDownload.do?fileno=<%=fvo.getFile_no()%>">DownLoad</a> </td>
 		</tr>
 	
 	<%
