@@ -1,5 +1,7 @@
 package kr.or.ddit.dao;
 
+import java.util.List;
+
 import kr.or.ddit.vo.MemberVO;
 
 public interface IMemberDao {
@@ -14,5 +16,7 @@ public interface IMemberDao {
 	 */
 	
 	public MemberVO getLoginMember(MemberVO memVo);
+	
+	public List<MemberVO> selectAllMember();
 
 }

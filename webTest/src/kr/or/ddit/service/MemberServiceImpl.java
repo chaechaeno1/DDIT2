@@ -1,5 +1,7 @@
 package kr.or.ddit.service;
 
+import java.util.List;
+
 import kr.or.ddit.dao.IMemberDao;
 import kr.or.ddit.dao.MemberDaoImpl;
 import kr.or.ddit.vo.MemberVO;
@@ -24,5 +26,13 @@ public class MemberServiceImpl implements IMemberService {
 		
 		return dao.getLoginMember(memVo);
 	}
+	
+	@Override
+	public List<MemberVO> selectAllMember() {
+		
+		return dao.selectAllMember();
+	}
+	
+	
 
 }

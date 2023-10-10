@@ -11,6 +11,7 @@
 	 	select * from mymember where mem_id=#{mem_id} and mem_pass=#{mem_pass}
 	</select>
 
+
 </mapper>	
 
 

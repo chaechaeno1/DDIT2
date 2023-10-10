@@ -1,5 +1,7 @@
 package kr.or.ddit.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.util.MybatisUtil;
@@ -32,5 +34,23 @@ public class MemberDaoImpl implements IMemberDao {
 		
 		return loginMemberVo;
 	}
+	
+	@Override
+	public List<MemberVO> selectAllMember() {
+		SqlSession session = MybatisUtil.getSqlSession();
+		List<MemberVO> selectMemberVo = null; 
+		try {
+			selectMemberVo = session.selectList("member.selectAllMember");			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(session!=null) session.close();
+		}
+		
+		return selectMemberVo;
+		
+	}
+	
+	
 
 }
